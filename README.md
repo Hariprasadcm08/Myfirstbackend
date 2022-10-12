@@ -1,6 +1,1 @@
-# Lithium
-Backend cohort Oct 2022 - Jan 2023
-
-
-# Assignment
-// Will add this later
+# lithium [B[D[D[D[D[D[D[D[D[DBackend cohort sept 2022 - jan 2023
