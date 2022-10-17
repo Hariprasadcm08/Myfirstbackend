@@ -15,29 +15,84 @@ router.get('/students', function (req, res){
 })
 
 
-// Example 1 for path params
-router.get('/students/:studentName', function(req, res){
-    // ':' denotes that the following part of route is a variable
-    // The value of this variable is what we are sending in the request url after /students
-    // This value is set in the form of an object inside req.params
-    // The object contain key value pairs
-    // key is the variable in the route
-    // value is whatever dynamic value sent in the request url
-    let myParams = req.params
+//-----1----//
 
-    // params attribute is fixed in a request object
-    // params contains the path parameters object
-    console.log("The path params in the request are : ", myParams)
-    res.send('The full name is ' + myParams.studentName )
+    let myArray = ["KGF","Kantara","kranti","Bahubali","Raghuvaran B.tech"]
+
+  router.get('/Movies', function (req, res) {
+   res.send(myArray)
 })
 
-// Example 2 for path params
-router.get('/student-details/:name', function(req, res){
-    let requestParams = req.params
-    console.log("This is the request ", requestParams)
-    let studentName = requestParams.name
-    console.log('Name of the student is ', studentName)
-    res.send('Dummy response')
-})
+//------2------//
+router.get('/Movies/:indexNumber',(req,res)=>{
+         let index = req.params.indexNumber  
+         res.send(myArray[index])
+     })
+
+     //-------3------//
+     router.get('/edgeCase/:y',function(req,res){
+        let movies = ["KGF","Kantara","kranti","Bahubali","Raghuvaran B.tech"]
+        let myParams = req.params
+        if(myParams.y<movies.length)
+        {
+            res.send('movie name: ' + movies[myParams.y])
+        }
+        else
+        {
+           res.send("use a valid index")
+        }
+    
+    })
+    
+    //-------4------//
+    router.get('/GET/films',function(req,res){
+        let array=[ {
+            "id": 1,
+            "name": "KGF"
+           }, {
+            "id": 2,
+            "name": "KANTARA"
+           }, {
+            "id": 3,
+            "name": "KRANTI"
+           }, {
+            "id": 4,
+            "name": "BAHUBALI"
+           }]
+           res.send(array)
+        })
+
+        //--------5--------//
+        router.get( '/GET/films/:filmId',function(req,res){
+            let array=[ {
+                "id": 1,
+                "name": "KGF"
+               }, {
+                "id": 2,
+                "name": "KANTARA"
+               }, {
+                "id": 3,
+                "name": "KRANTI"
+               }, {
+                "id": 4,
+                "name": "BAHUBALI"
+               }]
+               let myParam=req.params
+        
+               let count=0
+               for(let i=0;i<array.length;i++){
+                if(array[i].id==Number(myParam.filmId)){
+                    count++
+                    
+                    res.send(array[i])
+                }
+              }
+               if(count==0)    
+              res.send("No movie exists with this id")
+        
+            
+                
+        })
+
 
 module.exports = router;
