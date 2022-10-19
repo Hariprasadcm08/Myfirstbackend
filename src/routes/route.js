@@ -1,3 +1,4 @@
+const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
 
@@ -7,67 +8,42 @@ router.get('/students/:name', function(req, res) {
     res.send(studentName)
 })
 
-router.get("/random" , function(req, res) {
-    res.send("hi there")
+router.get('/soln1',function(req,res){
+    const num=[1,2,3,5,6,7] 
+    const  num1=(num[num.length-1]*(num[num.length-1]+1))/2 //num1=sum of consecutive numbers
+    const num2=num.reduce((pre,cur)=>pre+cur) //num2=sum of numbers present in declared array
+  // by finding difference between the num1 and num2 we will get the missing number
+  const num3=num1-num2
+  console.log(num3 )
+res.send(`missing num: ${num3}`)
 })
 
 
-router.get("/test-api" , function(req, res) {
-    res.send("hi FunctionUp")
+router.get('/soln2',function(req,res){
+    const arr=[36,37,38,40]
+    for(i=0;i<arr.length;i++){
+       if(arr[i]+1==arr[i+1])
+        continue
+       
+    else{
+        console.log('missing no:',arr[i]+1)  
+        const rresult=arr[i]+1
+        res.send(`missing no: ${rresult}`)  
+          
+          break;
+        }
+    }
 })
 
-
-router.get("/test-api-2" , function(req, res) {
-    res.send("hi FunctionUp. This is another cool API")
-})
-
-
-router.get("/test-api-3" , function(req, res) {
-    res.send("hi FunctionUp. This is another cool API. And NOw i am bored of creating API's ")
-})
-
-
-router.get("/test-api-4" , function(req, res) {
-    res.send("hi FunctionUp. This is another cool API. And NOw i am bored of creating API's. PLZ STOP CREATING MORE API;s ")
-})
+// router.get('/new',function(req,res){
+//     const arr=[1,2,3,4]
+//     const arr2=[5,6,7,8]
+//     const arr3=arr.reduce((pre,cur)=>pre*cur)
+//     const arr4=arr2.reduce((pre,cur)=>pre*cur)
+//     const fArr=arr3+arr4
+// res.send(`sum of arr: ${fArr}`)
+// })
 
 
-
-router.get("/test-api-5" , function(req, res) {
-    res.send("hi FunctionUp5. This is another cool API. And NOw i am bored of creating API's. PLZ STOP CREATING MORE API;s ")
-})
-
-router.get("/test-api-6" , function(req, res) {
-    res.send({a:56, b: 45})
-})
-
-router.post("/test-post", function(req, res) {
-    res.send([ 23, 45 , 6])
-})
-
-
-router.post("/test-post-2", function(req, res) {
-    res.send(  { msg: "hi" , status: true }  )
-})
-
-router.post("/test-post-3", function(req, res) {
-    // let id = req.body.user
-    // let pwd= req.body.password
-
-    // console.log( id , pwd)
-
-    console.log( req.body )
-
-    res.send(  { msg: "hi" , status: true }  )
-})
-
-
-
-router.post("/test-post-4", function(req, res) {
-    let arr= [ 12, "functionup"]
-    let ele= req.body.element
-    arr.push(ele)
-    res.send(  { msg: arr , status: true }  )
-})
 
 module.exports = router;
