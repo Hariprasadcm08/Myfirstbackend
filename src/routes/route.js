@@ -43,6 +43,55 @@ router.get('/soln2',function(req,res){
 //     const fArr=arr3+arr4
 // res.send(`sum of arr: ${fArr}`)
 // })
+let players =
+   [
+       {
+           "name": "kiran",
+           "dob": "21/12/1998",
+           "gender": "male",
+           "city": "bengaluru",
+           "sports": [
+               "badminton"
+           ]
+       },
+       {
+           "name": "shashank",
+           "dob": "18/09/1999",
+           "gender": "male",
+           "city": "mysore",
+           "sports": [
+               "cricket"
+           ],
+       },
+       {
+           "name": "varun",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mangalore",
+           "sports": [
+               "table tennis"
+           ],
+       },
+   ]
+ 
+   router.post('/players', function (req, res) {
+    let newData=req.body
+   
+    
+    for (let i = 0; i < players.length; i++) {
+    const ele = players[i];
+   if(ele.name==newData.name){
+            console.log("person exist")
+            res.send("person already exist")
+        }
+        }
+    players.push(newData)
+     console.log(players)
+       
+res.send(  { players , status: true }  )
+   })
+
+
 
 
 
