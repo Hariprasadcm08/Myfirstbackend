@@ -8,7 +8,7 @@ router.get('/test-me', function (req, res) {
     myHelper.printDate()
     myHelper.getCurrentMonth()
     myHelper.getCohortData()
-    let firstElement = underscore.first(['Sabiha','Akash','Pritesh'])
+    let firstElement = underscore.first(['Hari','Vishwa','Prathap'])
     console.log('The first element received from underscope function is '+firstElement)
     res.send('My first ever api!')
 });
