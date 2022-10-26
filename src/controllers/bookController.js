@@ -12,5 +12,11 @@ const getBooksData= async function (req, res) {
     res.send({msg: allBooks})
 }
 
+const bookList= async function (req,res){
+    let sortBooks=await BookModel.find({bookName:,authorName:})
+    res.send({msg:sortBooks})
+}
+
 module.exports.createBook= createBook
 module.exports.getBooksData= getBooksData
+module.exports.bookList= bookList
