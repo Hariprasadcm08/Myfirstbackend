@@ -8,8 +8,19 @@ const userSchema = new mongoose.Schema( {
 
         required: true
     },
-    emailId: String,
-    password: String,
+    emailId:{
+               type: String,
+               required: true,
+               unique:true
+    },
+    password:{
+                type:String,
+                required:true
+    },
+    isDeleted:{
+               type:Boolean,
+               default:false
+    },
     gender: {
         type: String,
         enum: ["male", "female", "other"]
